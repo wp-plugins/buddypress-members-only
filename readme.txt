@@ -13,7 +13,7 @@ Restricts Your Buddypress to logged in/registered members.
 
 == Description ==
 Plugin Name: BuddyPress Members Only<br>
-Plugin Support URI: http://tomas.zhu.bz/my-bbpress-plugin-bbpress-notification.html/<br>
+Plugin Support URI: http://tomas.zhu.bz/my-buddypress-plugin-buddypress-members-only.html/<br>
 
 Restricts Your Buddypress to logged in/registered members only.
 Only registered/logged in users can view your site, non members can only open home page/login/register/lost password pages.
