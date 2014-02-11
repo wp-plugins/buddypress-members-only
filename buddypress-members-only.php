@@ -2,7 +2,7 @@
 /*
 Plugin Name: BuddyPress Members only
 Description: Only registered users can view your site, non members can only see a login/home page with no registration options
-Version: 1.0.0
+Version: 1.0.1
 Author: Tomas Zhu
 Author URI: http://tomas.zhu.bz/
 Plugin URI: http://tomas.zhu.bz/
@@ -48,7 +48,7 @@ function buddypress_members_only_setting()
 				
 				update_option('bpmoregisterpageurl',$m_bpmoregisterpageurl);
 			
-			tooltipsMessage("Changes saved.");
+			buddypress_members_only_message("Changes saved.");
 		}
 		echo "<br />";
 
@@ -127,10 +127,11 @@ function buddypress_only_for_members()
 	}
 	$current_url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 	$current_url = str_ireplace('http://','',$current_url);
-	$current_url = str_ireplace('www','',$current_url);
+	$current_url = str_ireplace('www.','',$current_url);
 	$saved_register_page_url = get_option('bpmoregisterpageurl');
+
 	$saved_register_page_url = str_ireplace('http://','',$saved_register_page_url);
-	$saved_register_page_url = str_ireplace('www','',$saved_register_page_url);
+	$saved_register_page_url = str_ireplace('www.','',$saved_register_page_url);
 	
 	if (stripos($current_url,$saved_register_page_url) === false)
 	{
@@ -147,15 +148,16 @@ function buddypress_only_for_members()
 		if (empty($saved_register_page_url))
 		{
 			$current_url = $_SERVER['REQUEST_URI'];
-			$redirect_url = get_option('siteurl')."/wp-login.php?redirect_to=$current_url";
-			wp_safe_redirect($redirect_url);
-			exit;
+			//$redirect_url = wp_login_url( get_option('siteurl').$current_url );
+			$redirect_url = wp_login_url( );
+			header( 'Location: ' . $redirect_url );
+			die();			
 		}
 		else 
 		{
 			$saved_register_page_url = 'http://'.$saved_register_page_url;
-			wp_safe_redirect($saved_register_page_url);
-			exit;
+			header( 'Location: ' . $saved_register_page_url );
+			die();
 		}
 	}
 }
