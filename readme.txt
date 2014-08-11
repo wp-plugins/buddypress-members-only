@@ -4,8 +4,8 @@ Author URI: http://tomas.zhu.bz/
 Donate link: http://tomas.zhu.bz/
 Tags:buddypress, community, restricts, membership, user, access, privacy, private, private community, protection, member
 Requires at least: 2.0
-Tested up to: 3.8.1
-Stable tag: 1.0.1
+Tested up to: 3.9.2
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,6 +39,9 @@ FAQs can be found here: http://tomas.zhu.bz/my-buddypress-plugin-buddypress-memb
 1. Register page URL or redirect page for non member of your buddypress site
 
 == Changelog ==
+
+= Version 1.0.2 =
+setting menu capability so the menu item will only displayed to the admin.
 
 = Version 1.0.1 =
 Added Notification in back end and fixed some bugs.

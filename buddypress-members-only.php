@@ -2,7 +2,7 @@
 /*
 Plugin Name: BuddyPress Members only
 Description: Only registered users can view your site, non members can only see a login/home page with no registration options
-Version: 1.0.1
+Version: 1.0.2
 Author: Tomas Zhu
 Author URI: http://tomas.zhu.bz/
 Plugin URI: http://tomas.zhu.bz/
@@ -30,8 +30,8 @@ add_action('admin_menu', 'bp_members_only_option_menu');
 function bp_members_only_option_menu()
 {
 
-   add_menu_page(__('Buddypress Members Only', 'BPMO'), __('Buddypress Members Only', 'BPMO'), 0, 'bpmemberonly', 'buddypress_members_only_setting');
-   add_submenu_page('bpmemberonly', __('Buddypress Members Only','BPMO'), __('Buddypress Members Only','BPMO'), 0, 'bpmemberonly', 'buddypress_members_only_setting');
+   add_menu_page(__('Buddypress Members Only', 'BPMO'), __('Buddypress Members Only', 'BPMO'), 10, 'bpmemberonly', 'buddypress_members_only_setting');
+   add_submenu_page('bpmemberonly', __('Buddypress Members Only','BPMO'), __('Buddypress Members Only','BPMO'), 10, 'bpmemberonly', 'buddypress_members_only_setting');
 }
 
 function buddypress_members_only_setting()
