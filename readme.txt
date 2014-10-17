@@ -2,10 +2,10 @@
 Contributors: zhuyi
 Author URI: http://tomas.zhu.bz/
 Donate link: http://tomas.zhu.bz/
-Tags:buddypress, community, restricts, membership, user, access, privacy, private, private community, protection, member
+Tags:buddypress,wordpress,wordpress members only,community,restricts,membership,user,access,privacy,private,private community,protection,pretected site,member
 Requires at least: 2.0
-Tested up to: 3.9.2
-Stable tag: 1.0.2
+Tested up to: 4.0.0
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,7 @@ Logged in users have full access.
 
 If a users who not logged in, he can view home page, but when he try to view any other buddypress content, he will be redirected to optionally URL which can be setting in admin panel.
 
+Based on some users suggestion, since version 1.0.4, our buddypress members only plugin support wordpress too, if you disable buddypress on your site, our plugin will detect it and support wordpress members only automatically.
 <h4>How To Use:</h4>
 BuddyPress Members Only is a simple & quick & light BuddyPress Members Only solution, it allows you to make your buddypress only viewable to visitors that are logged in, you can just activate the plugin and finish a little setting in admin panel and it will begin the work, but if you do not setting it in back end, it works well too, it is super easy to use.
 
@@ -39,6 +40,8 @@ FAQs can be found here: http://tomas.zhu.bz/my-buddypress-plugin-buddypress-memb
 1. Register page URL or redirect page for non member of your buddypress site
 
 == Changelog ==
+= Version 1.0.4 =
+Based on some users suggestion, since version 1.0.4, our buddypress members only plugin support wordpress too, if you disable buddypress on your site, our plugin will detect it and support wordpress members only automatically.
 
 = Version 1.0.2 =
 setting menu capability so the menu item will only displayed to the admin.

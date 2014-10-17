@@ -2,7 +2,7 @@
 /*
 Plugin Name: BuddyPress Members only
 Description: Only registered users can view your site, non members can only see a login/home page with no registration options
-Version: 1.0.2
+Version: 1.0.4
 Author: Tomas Zhu
 Author URI: http://tomas.zhu.bz/
 Plugin URI: http://tomas.zhu.bz/
@@ -121,9 +121,12 @@ function buddypress_members_only_message($p_message)
 function buddypress_only_for_members()
 {
 	if (is_front_page()) return;
-	if ( bp_is_register_page() || bp_is_activation_page() )
+	if (function_exists('bp_is_register_page') && function_exists('bp_is_activation_page') )
 	{
-		return;
+		if ( bp_is_register_page() || bp_is_activation_page() )
+		{
+			return;
+		}
 	}
 	$current_url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 	$current_url = str_ireplace('http://','',$current_url);
@@ -141,7 +144,6 @@ function buddypress_only_for_members()
 	{
 		return;
 	}
-	
 	
 	if ( is_user_logged_in() == false )
 	{
@@ -162,4 +164,11 @@ function buddypress_only_for_members()
 	}
 }
 
-add_action('wp','buddypress_only_for_members');
+if (function_exists('bp_is_register_page') && function_exists('bp_is_activation_page') )
+{
+	add_action('wp','buddypress_only_for_members');
+}
+else 
+{
+	add_action('wp_head','buddypress_only_for_members');
+}
