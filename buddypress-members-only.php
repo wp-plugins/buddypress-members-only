@@ -2,7 +2,7 @@
 /*
 Plugin Name: BuddyPress Members only
 Description: Only registered users can view your site, non members can only see a login/home page with no registration options
-Version: 1.0.4
+Version: 1.0.5
 Author: Tomas Zhu
 Author URI: http://tomas.zhu.bz/
 Plugin URI: http://tomas.zhu.bz/
@@ -24,7 +24,7 @@ Copyright 2014  tomas.zhu  (email : expert2wordpress@gmail.com)
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 */
-
+ob_start();
 add_action('admin_menu', 'bp_members_only_option_menu');
 
 function bp_members_only_option_menu()

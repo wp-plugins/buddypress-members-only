@@ -5,7 +5,7 @@ Donate link: http://tomas.zhu.bz/
 Tags:buddypress,wordpress,wordpress members only,community,restricts,membership,user,access,privacy,private,private community,protection,pretected site,member
 Requires at least: 2.0
 Tested up to: 4.0.0
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,9 @@ FAQs can be found here: http://tomas.zhu.bz/my-buddypress-plugin-buddypress-memb
 1. Register page URL or redirect page for non member of your buddypress site
 
 == Changelog ==
+= Version 1.0.5 =
+Solve the problems in some themes about "headers already sent" error
+
 = Version 1.0.4 =
 Based on some users suggestion, since version 1.0.4, our buddypress members only plugin support wordpress too, if you disable buddypress on your site, our plugin will detect it and support wordpress members only automatically.
 
