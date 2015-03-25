@@ -4,7 +4,7 @@ Author URI: http://tomas.zhu.bz/
 Donate link: http://tomas.zhu.bz/
 Tags:buddypress,wordpress,wordpress members only,community,restricts,membership,user,access,privacy,private,private community,protection,pretected site,member
 Requires at least: 2.0
-Tested up to: 4.0.0
+Tested up to: 4.1.1
 Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
