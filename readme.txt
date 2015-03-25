@@ -19,7 +19,10 @@ Restricts Your Buddypress to logged in/registered members only.
 Only registered/logged in users can view your site, non members can only open home page/login/register/lost password pages.
 Logged in users have full access.
 
-If a users who not logged in, he can view home page, but when he try to view any other buddypress content, he will be redirected to optionally URL which can be setting in admin panel.
+Since version 1.1.0, We added a new option: Opened Page URLs, you can add any urls (enter one URL per line please) which opened to public, guest can view content of these opened post / pages / stores... and so on, and they will not be redirected to register page.
+Any feature request is welcome. :)
+
+If a users who not is logged in, he can view home page, but when he try to view any other buddypress content, he will be redirected to optionally URL which can be setting in admin panel.
 
 Based on some users suggestion, since version 1.0.4, our buddypress members only plugin support wordpress too, if you disable buddypress on your site, our plugin will detect it and support wordpress members only automatically.
 <h4>How To Use:</h4>
@@ -30,6 +33,7 @@ BuddyPress Members Only is a simple & quick & light BuddyPress Members Only solu
 1:Upload the BuddyPress Members only plugin to your blog
 2:Activate it
 3:Setting your register page URL or redirect page for non member of your buddypress site in BuddyPress Members only menu at admin panel
+4:If you have any pages / posts / URLs is opened to public user account, you can just add then in "Open Page URLs" textarea, enter one URL per line please.
 That's all, when non member view your buddypress site they will be redirect to login/register page or if you setting your register page URL, non member will be redirected to your register page URL.
 
 == Frequently Asked Questions ==
@@ -40,6 +44,9 @@ FAQs can be found here: http://tomas.zhu.bz/my-buddypress-plugin-buddypress-memb
 1. Register page URL or redirect page for non member of your buddypress site
 
 == Changelog ==
+= Version 1.1.0 =
+Since version 1.1.0, We added a new option: Opened Page URLs, you can add any urls (enter one URL per line please) which opened to public, guest can view content of these opened post / pages / stores... and so on, and they will not be redirected to register page.
+
 = Version 1.0.5 =
 Solve the problems in some themes about "headers already sent" error
 

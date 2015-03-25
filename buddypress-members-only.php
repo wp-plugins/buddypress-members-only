@@ -2,10 +2,10 @@
 /*
 Plugin Name: BuddyPress Members only
 Description: Only registered users can view your site, non members can only see a login/home page with no registration options
-Version: 1.0.5
+Version: 1.1.0
 Author: Tomas Zhu
 Author URI: http://tomas.zhu.bz/
-Plugin URI: http://tomas.zhu.bz/
+Plugin URI: http://tomas.zhu.bz/my-buddypress-plugin-buddypress-members-only.html/
 
 Copyright 2014  tomas.zhu  (email : expert2wordpress@gmail.com)
 
@@ -46,9 +46,21 @@ function buddypress_members_only_setting()
 				$m_bpmoregisterpageurl = $wpdb->escape($_POST['bpmoregisterpageurl']);
 			}
 				
-				update_option('bpmoregisterpageurl',$m_bpmoregisterpageurl);
+			update_option('bpmoregisterpageurl',$m_bpmoregisterpageurl);
+			if (isset($_POST['bpopenedpageurl']))
+			{
+				$bpopenedpageurl = trim($_POST['bpopenedpageurl']);
+				if (strlen($bpopenedpageurl) == 0)
+				{
+					
+				}
+				else 
+				{
+					update_option('saved_open_page_url',$bpopenedpageurl);
+				}
+			}
 			
-			buddypress_members_only_message("Changes saved.");
+			buddypress_members_only_message("Your changes has been saved.");
 		}
 		echo "<br />";
 
@@ -74,21 +86,36 @@ function buddypress_members_only_setting()
 									</span>
 									</h3>
 								
-									<div class="inside" style='padding-left:5px;'>
-										<br />
+									<div class="inside" style='padding-left:10px;'>
 										<form id="bpmoform" name="bpmoform" action="" method="POST">
 										<table id="bpmotable" width="100%">
 										<tr>
-										<td width="30%">
+										<td width="30%" style="padding: 20px;">
 										Register Page URL:
 										</td>
-										<td width="70%">
-										<input type="text" id="bpmoregisterpageurl" name="bpmoregisterpageurl" size="70" value="<?php  echo $saved_register_page_url; ?>">
+										<td width="70%" style="padding: 20px;">
+										<input type="text" id="bpmoregisterpageurl" name="bpmoregisterpageurl"  style="width:500px;" size="70" value="<?php  echo $saved_register_page_url; ?>">
 										</td>
 										</tr>
+										
+										<tr style="margin-top:30px;">
+										<td width="30%" style="padding: 20px;" valign="top">
+										Opened Page URLs:
+										</td>
+										<td width="70%" style="padding: 20px;">
+										<?php 
+										$urlsarray = get_option('saved_open_page_url'); 
+										?>
+										<textarea name="bpopenedpageurl" id="bpopenedpageurl" cols="70" rows="10" style="width:500px;"><?php echo $urlsarray; ?></textarea>
+										<p><font color="Gray"><i>Enter one URL per line please.</i></p>
+										<p><font color="Gray"><i>These pages will opened for guest and guest will not be directed to register page.</i></p>					
+										</td>
+										</tr>
+										
+										
 										</table>
 										<br />
-										<input type="submit" id="bpmosubmitnew" name="bpmosubmitnew" value=" Submit ">
+										<input type="submit" id="bpmosubmitnew" name="bpmosubmitnew" value=" Submit " style="margin:1px 20px;">
 										</form>
 										
 										<br />
@@ -102,6 +129,8 @@ function buddypress_members_only_setting()
 		</div>
 		<div style="clear:both"></div>
 		<br />
+
+		
 		
 		<?php
 		}				
@@ -110,7 +139,7 @@ function buddypress_members_only_setting()
 function buddypress_members_only_message($p_message)
 {
 
-	echo "<div id='message' class='updated fade'>";
+	echo "<div id='message' class='updated fade' style='line-height: 30px;margin-left: 0px;'>";
 
 	echo $p_message;
 
@@ -128,6 +157,7 @@ function buddypress_only_for_members()
 			return;
 		}
 	}
+	
 	$current_url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 	$current_url = str_ireplace('http://','',$current_url);
 	$current_url = str_ireplace('www.','',$current_url);
@@ -143,6 +173,28 @@ function buddypress_only_for_members()
 	else 
 	{
 		return;
+	}
+	
+	// check is opened pages
+	$saved_open_page_option = get_option('saved_open_page_url');
+
+	$saved_open_page_url = explode("\n", trim($saved_open_page_option));
+
+	if ((is_array($saved_open_page_url)) && (count($saved_open_page_url) > 0))
+	{
+		foreach ($saved_open_page_url as $saved_open_page_url_single)
+		{
+			$saved_open_page_url_single = pure_url($saved_open_page_url_single);
+
+			if (stripos($current_url,$saved_open_page_url_single) === false)
+			{
+				
+			}
+			else 
+			{
+				return;
+			}
+		}
 	}
 	
 	if ( is_user_logged_in() == false )
@@ -162,6 +214,15 @@ function buddypress_only_for_members()
 			die();
 		}
 	}
+}
+
+function pure_url($current_url)
+{
+	if (empty($current_url)) return false;
+	$current_url = str_ireplace('http://','',$current_url);
+	$current_url = str_ireplace('www.','',$current_url);
+	$current_url = trim($current_url);
+	return $current_url;
 }
 
 if (function_exists('bp_is_register_page') && function_exists('bp_is_activation_page') )
